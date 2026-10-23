@@ -1,0 +1,54 @@
+{
+  "name": "@cutbray/ui",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./button": "./src/components/button.tsx",
+    "./input": "./src/components/input.tsx",
+    "./card": "./src/components/card.tsx",
+    "./label": "./src/components/label.tsx",
+    "./select": "./src/components/select.tsx",
+    "./table": "./src/components/table.tsx",
+    "./badge": "./src/components/badge.tsx",
+    "./dialog": "./src/components/dialog.tsx",
+    "./toast": "./src/components/toast.tsx",
+    "./avatar": "./src/components/avatar.tsx",
+    "./dropdown-menu": "./src/components/dropdown-menu.tsx",
+    "./tabs": "./src/components/tabs.tsx",
+    "./tooltip": "./src/components/tooltip.tsx",
+    "./separator": "./src/components/separator.tsx",
+    "./skeleton": "./src/components/skeleton.tsx",
+    "./scroll-area": "./src/components/scroll-area.tsx"
+  },
+  "scripts": {
+    "lint": "eslint src --ext ts,tsx",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "clsx": "^2.1.0",
+    "tailwind-merge": "^2.0.0",
+    "lucide-react": "^0.400.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-select": "^2.1.0",
+    "@radix-ui/react-dialog": "^1.1.0",
+    "@radix-ui/react-dropdown-menu": "^2.1.0",
+    "@radix-ui/react-tabs": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.0",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-avatar": "^1.1.0",
+    "@radix-ui/react-toast": "^1.2.0",
+    "@radix-ui/react-scroll-area": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "typescript": "^5.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

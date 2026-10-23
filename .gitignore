@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+.next/
+*.tsbuildinfo
+
+# Turbo
+.turbo/
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Test
+coverage/
+.nyc_output/
+
+# Database
+*.sqlite
+*.db
+
+# Prisma
+prisma/migrations/.migration_lock.toml
+
+# Storage (mock adapter)
+storage/
+
+# Misc
+*.pem
+.vercel
+.netlify

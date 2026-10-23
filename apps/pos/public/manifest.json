@@ -1,0 +1,43 @@
+{
+  "name": "Cutbray POS",
+  "short_name": "Cutbray POS",
+  "description": "Point of Sale untuk Cutbray - Offline First",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#16a34a",
+  "orientation": "landscape-primary",
+  "scope": "/",
+  "lang": "id",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Buka Shift",
+      "short_name": "Shift",
+      "description": "Buka shift kasir",
+      "url": "/shift",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Riwayat Transaksi",
+      "short_name": "Riwayat",
+      "description": "Lihat riwayat penjualan",
+      "url": "/history",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

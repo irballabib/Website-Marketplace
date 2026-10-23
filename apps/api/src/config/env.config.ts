@@ -1,0 +1,50 @@
+import { registerAs } from '@nestjs/config';
+import { validateEnv, EnvConfig } from './env.schema';
+
+export default registerAs('app', (): EnvConfig => {
+  const config = {
+    NODE_ENV: process.env.NODE_ENV,
+    API_PORT: process.env.API_PORT,
+    WEB_PORT: process.env.WEB_PORT,
+    POS_PORT: process.env.POS_PORT,
+    DATABASE_URL: process.env.DATABASE_URL,
+    REDIS_URL: process.env.REDIS_URL,
+    JWT_SECRET: process.env.JWT_SECRET,
+    JWT_ACCESS_TTL: process.env.JWT_ACCESS_TTL,
+    JWT_REFRESH_TTL: process.env.JWT_REFRESH_TTL,
+    ARGON2_MEMORY_COST: process.env.ARGON2_MEMORY_COST,
+    ARGON2_TIME_COST: process.env.ARGON2_TIME_COST,
+    ARGON2_PARALLELISM: process.env.ARGON2_PARALLELISM,
+    STORAGE_ADAPTER: process.env.STORAGE_ADAPTER,
+    STORAGE_LOCAL_PATH: process.env.STORAGE_LOCAL_PATH,
+    EMAIL_ADAPTER: process.env.EMAIL_ADAPTER,
+    SMTP_HOST: process.env.SMTP_HOST,
+    SMTP_PORT: process.env.SMTP_PORT,
+    SMTP_USER: process.env.SMTP_USER,
+    SMTP_PASS: process.env.SMTP_PASS,
+    EMAIL_FROM: process.env.EMAIL_FROM,
+    PAYMENT_ADAPTER: process.env.PAYMENT_ADAPTER,
+    MIDTRANS_SERVER_KEY: process.env.MIDTRANS_SERVER_KEY,
+    MIDTRANS_CLIENT_KEY: process.env.MIDTRANS_CLIENT_KEY,
+    MIDTRANS_IS_PRODUCTION: process.env.MIDTRANS_IS_PRODUCTION,
+    SHIPPING_ADAPTER: process.env.SHIPPING_ADAPTER,
+    BITESHIP_API_KEY: process.env.BITESHIP_API_KEY,
+    WHATSAPP_ADAPTER: process.env.WHATSAPP_ADAPTER,
+    WHATSAPP_API_TOKEN: process.env.WHATSAPP_API_TOKEN,
+    WHATSAPP_PHONE_NUMBER_ID: process.env.WHATSAPP_PHONE_NUMBER_ID,
+    VAPID_PUBLIC_KEY: process.env.VAPID_PUBLIC_KEY,
+    VAPID_PRIVATE_KEY: process.env.VAPID_PRIVATE_KEY,
+    VAPID_SUBJECT: process.env.VAPID_SUBJECT,
+    QR_BASE_URL: process.env.QR_BASE_URL,
+    MINIO_ENDPOINT: process.env.MINIO_ENDPOINT,
+    MINIO_PORT: process.env.MINIO_PORT,
+    MINIO_ACCESS_KEY: process.env.MINIO_ACCESS_KEY,
+    MINIO_SECRET_KEY: process.env.MINIO_SECRET_KEY,
+    MINIO_BUCKET: process.env.MINIO_BUCKET,
+    MINIO_USE_SSL: process.env.MINIO_USE_SSL,
+    CORS_ORIGINS: process.env.CORS_ORIGINS?.split(','),
+    LOG_LEVEL: process.env.LOG_LEVEL,
+  };
+
+  return validateEnv(config);
+});
