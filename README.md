@@ -1,6 +1,6 @@
-# Cutbray Marketplace
+# Bale Store
 
-Platform omnichannel brand **celana panjang cutbray**: toko online, POS kasir offline-first, booking/pre-order dengan DP, produksi (BOM, work order), dan akuntansi SAK EMKM dalam satu database.
+Marketplace celana cutbray **Bale Store**: toko online, POS kasir offline-first, booking/pre-order dengan DP, produksi (BOM, work order), dan akuntansi SAK EMKM dalam satu database.
 
 ## 🏗️ Arsitektur
 

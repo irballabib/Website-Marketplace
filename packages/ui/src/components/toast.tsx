@@ -105,9 +105,20 @@ ToastDescription.displayName = ToastPrimitives.Description.displayName;
 type ToastProps = React.ComponentPropsWithoutRef<typeof Toast>;
 type ToastActionElement = React.ReactElement<typeof ToastAction>;
 
+/**
+ * Root toast renderer. Mounts the Radix provider + viewport so toast
+ * primitives can be rendered anywhere in the tree.
+ */
+const Toaster = () => (
+  <ToastProvider>
+    <ToastViewport />
+  </ToastProvider>
+);
+
 export {
   type ToastProps,
   type ToastActionElement,
+  Toaster,
   ToastProvider,
   ToastViewport,
   Toast,

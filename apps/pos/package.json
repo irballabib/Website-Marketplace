@@ -6,9 +6,9 @@
     "dev": "next dev -p 3002",
     "build": "next build",
     "start": "next start -p 3002",
-    "lint": "next lint",
+    "lint": "eslint src --ext ts,tsx",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
     "next": "^15.0.0",
@@ -24,6 +24,7 @@
     "dexie": "^4.0.0"
   },
   "devDependencies": {
+    "@cutbray/config": "workspace:*",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

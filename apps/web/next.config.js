@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Lint is a separate Turborepo task; Next's internal ESLint pass cannot
+  // resolve the shared type-aware config and reports false positives.
+  eslint: { ignoreDuringBuilds: true },
   transpilePackages: ['@cutbray/ui', '@cutbray/shared'],
   experimental: {
     optimizePackageImports: ['@cutbray/ui', 'lucide-react'],

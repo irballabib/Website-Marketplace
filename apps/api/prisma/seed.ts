@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import * as argon2 from 'argon2';
-import { generateUuidV7 } from '@cutbray/shared/utils';
+import { generateUuidV7 } from '../src/common/id';
 
 const prisma = new PrismaClient();
 
@@ -10,10 +10,10 @@ async function main() {
   // Create default tenant
   const tenant = await prisma.tenant.upsert({
     where: { code: 'cutbray' },
-    update: {},
+    update: { name: 'Bale Store' },
     create: {
       id: generateUuidV7(),
-      name: 'Cutbray',
+      name: 'Bale Store',
       code: 'cutbray',
       settings: {},
       isActive: true,
@@ -24,6 +24,9 @@ async function main() {
   // Create permissions
   const permissions = [
     { code: 'pos.discount.approve', name: 'Approve POS Discount', category: 'POS' },
+    { code: 'pos.shift.manage', name: 'Manage POS Shift', category: 'POS' },
+    { code: 'pos.sale.create', name: 'Create POS Sale', category: 'POS' },
+    { code: 'pos.sale.void', name: 'Void POS Sale', category: 'POS' },
     { code: 'accounting.journal.post', name: 'Post Journal Entry', category: 'Accounting' },
     { code: 'inventory.adjust', name: 'Adjust Inventory', category: 'Inventory' },
     { code: 'production.workorder.create', name: 'Create Work Order', category: 'Production' },
@@ -45,7 +48,7 @@ async function main() {
 
   // Create roles
   const superadminRole = await prisma.role.upsert({
-    where: { id: 'superadmin-role-id' },
+    where: { tenantId_name: { tenantId: tenant.id, name: 'superadmin' } },
     update: {},
     create: {
       id: generateUuidV7(),
@@ -57,7 +60,7 @@ async function main() {
   });
 
   const adminRole = await prisma.role.upsert({
-    where: { id: 'admin-role-id' },
+    where: { tenantId_name: { tenantId: tenant.id, name: 'admin' } },
     update: {},
     create: {
       id: generateUuidV7(),
@@ -69,7 +72,7 @@ async function main() {
   });
 
   const cashierRole = await prisma.role.upsert({
-    where: { id: 'cashier-role-id' },
+    where: { tenantId_name: { tenantId: tenant.id, name: 'cashier' } },
     update: {},
     create: {
       id: generateUuidV7(),
@@ -81,7 +84,7 @@ async function main() {
   });
 
   const warehouseRole = await prisma.role.upsert({
-    where: { id: 'warehouse-role-id' },
+    where: { tenantId_name: { tenantId: tenant.id, name: 'warehouse' } },
     update: {},
     create: {
       id: generateUuidV7(),
@@ -93,7 +96,7 @@ async function main() {
   });
 
   const accountantRole = await prisma.role.upsert({
-    where: { id: 'accountant-role-id' },
+    where: { tenantId_name: { tenantId: tenant.id, name: 'accountant' } },
     update: {},
     create: {
       id: generateUuidV7(),
@@ -148,7 +151,7 @@ async function main() {
   }
 
   const cashierPerms = allPermissions.filter(p =>
-    ['pos.discount.approve', 'order.view', 'order.manage', 'catalog.product.manage'].includes(p.code)
+    ['pos.discount.approve', 'pos.shift.manage', 'pos.sale.create', 'pos.sale.void', 'order.view', 'order.manage', 'catalog.product.manage'].includes(p.code)
   );
   for (const perm of cashierPerms) {
     await prisma.rolePermission.upsert({
@@ -411,7 +414,7 @@ async function main() {
 
   // Create default settings
   const settings = [
-    { key: 'company_name', value: 'Cutbray', scope: 'global' },
+    { key: 'company_name', value: 'Bale Store', scope: 'global' },
     { key: 'currency', value: 'IDR', scope: 'global' },
     { key: 'timezone', value: 'Asia/Jakarta', scope: 'global' },
     { key: 'stock_valuation_method', value: 'MOVING_AVERAGE', scope: 'inventory' },

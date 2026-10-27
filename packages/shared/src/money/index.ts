@@ -141,19 +141,20 @@ export function calculatePercentage(base: Money, percentage: number): Money {
   return base.percent(percentage);
 }
 
-/** Format rupiah helper (re-export from utils) */
-export function formatRupiah(amount: string | number, options?: { symbol?: boolean; compact?: boolean }): string {
+/** Format rupiah helper (canonical implementation used by Money.format) */
+export function formatRupiah(amount: string | number, options: { symbol?: boolean; compact?: boolean } = {}): string {
+  const { symbol = true, compact = false } = options;
   const num = typeof amount === 'string' ? parseFloat(amount) : amount;
-  if (isNaN(num)) return options?.symbol ? 'Rp 0' : '0';
+  if (isNaN(num)) return symbol ? 'Rp 0' : '0';
 
-  if (options?.compact) {
-    if (num >= 1_000_000_000) return `${options.symbol ? 'Rp ' : ''}${(num / 1_000_000_000).toFixed(1)}B`;
-    if (num >= 1_000_000) return `${options.symbol ? 'Rp ' : ''}${(num / 1_000_000).toFixed(1)}M`;
-    if (num >= 1_000) return `${options.symbol ? 'Rp ' : ''}${(num / 1_000).toFixed(1)}K`;
+  if (compact) {
+    if (num >= 1_000_000_000) return `${symbol ? 'Rp ' : ''}${(num / 1_000_000_000).toFixed(1)}B`;
+    if (num >= 1_000_000) return `${symbol ? 'Rp ' : ''}${(num / 1_000_000).toFixed(1)}M`;
+    if (num >= 1_000) return `${symbol ? 'Rp ' : ''}${(num / 1_000).toFixed(1)}K`;
   }
 
   return new Intl.NumberFormat('id-ID', {
-    style: options?.symbol ? 'currency' : 'decimal',
+    style: symbol ? 'currency' : 'decimal',
     currency: 'IDR',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,

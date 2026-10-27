@@ -1,45 +1,46 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Open_Sans } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
 
-const inter = Inter({
+const openSans = Open_Sans({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-sans',
+  weight: ['400', '500', '600', '700', '800'],
 });
 
 export const metadata: Metadata = {
-  title: 'Cutbray Marketplace',
-  description: 'Omnichannel platform for Cutbray pants brand',
-  keywords: ['pants', 'cutbray', 'fashion', 'ecommerce', 'pos'],
-  authors: [{ name: 'Cutbray Team' }],
-  creator: 'Cutbray',
-  publisher: 'Cutbray',
+  title: 'Bale Store — Celana Cutbray',
+  description: 'Marketplace celana cutbray: belanja online, ambil di toko, dan lacak pesanan.',
+  keywords: ['bale store', 'celana cutbray', 'fashion', 'ecommerce', 'marketplace'],
+  authors: [{ name: 'Bale Store' }],
+  creator: 'Bale Store',
+  publisher: 'Bale Store',
   robots: 'index, follow',
   openGraph: {
     type: 'website',
     locale: 'id_ID',
     url: 'http://localhost:3000',
-    title: 'Cutbray Marketplace',
-    description: 'Omnichannel platform for Cutbray pants brand',
-    siteName: 'Cutbray',
+    title: 'Bale Store — Celana Cutbray',
+    description: 'Marketplace celana cutbray: belanja online, ambil di toko, dan lacak pesanan.',
+    siteName: 'Bale Store',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cutbray Marketplace',
-    description: 'Omnichannel platform for Cutbray pants brand',
+    title: 'Bale Store — Celana Cutbray',
+    description: 'Marketplace celana cutbray: belanja online, ambil di toko, dan lacak pesanan.',
   },
   verification: {
     other: {
-      'theme-color': '#16a34a',
+      'theme-color': '#03AC0E',
     },
   },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: light)', color: '#03AC0E' },
     { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
   ],
   width: 'device-width',
@@ -61,9 +62,9 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Cutbray" />
+        <meta name="apple-mobile-web-app-title" content="Bale Store" />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${openSans.variable} font-sans antialiased`}>
         <Providers>{children}</Providers>
       </body>
     </html>

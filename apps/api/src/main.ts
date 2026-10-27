@@ -2,22 +2,27 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
-import * as pino from 'pino';
+import type { NestExpressApplication } from '@nestjs/platform-express';
+import { resolve } from 'node:path';
+import pino from 'pino';
 
 import { AppModule } from './app.module';
+import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 
 async function bootstrap() {
   const logger = pino({ level: process.env.LOG_LEVEL ?? 'info' });
 
-  const app = await NestFactory.create(AppModule, {
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     bufferLogs: true,
     logger: ['log', 'error', 'warn', 'debug', 'verbose'],
   });
 
   const configService = app.get(ConfigService);
 
-  // Global prefix
-  app.setGlobalPrefix('api/v1');
+  app.enableShutdownHooks();
+
+  // Global prefix: combined with URI versioning this yields /api/v1/...
+  app.setGlobalPrefix('api');
 
   // API Versioning
   app.enableVersioning({
@@ -31,6 +36,13 @@ async function bootstrap() {
     credentials: true,
   });
 
+  // Product media served by the local (mock) storage adapter.
+  const storagePath = configService.get<string>('STORAGE_LOCAL_PATH')?.trim() || './storage';
+  app.useStaticAssets(resolve(process.cwd(), storagePath, 'catalog'), {
+    prefix: '/uploads/catalog/',
+    index: false,
+  });
+
   // Global validation pipe
   app.useGlobalPipes(
     new ValidationPipe({
@@ -41,15 +53,19 @@ async function bootstrap() {
     })
   );
 
+  // Uniform error envelope: { code, message, details? }
+  app.useGlobalFilters(new HttpExceptionFilter());
+
   // Swagger/OpenAPI
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('Cutbray Marketplace API')
-    .setDescription('Omnichannel platform for Cutbray pants brand')
+    .setTitle('Bale Store API')
+    .setDescription('Marketplace and omnichannel API for Bale Store')
     .setVersion('1.0')
     .addBearerAuth()
     .addTag('health', 'Health checks')
     .addTag('auth', 'Authentication')
     .addTag('catalog', 'Product catalog')
+    .addTag('catalog-admin', 'Catalog administration')
     .addTag('orders', 'Orders & checkout')
     .addTag('pos', 'Point of Sale')
     .addTag('bookings', 'Bookings & DP')
@@ -72,4 +88,4 @@ async function bootstrap() {
   logger.info(`📚 Swagger docs: http://localhost:${port}/docs`);
 }
 
-bootstrap();
+void bootstrap();

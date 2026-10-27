@@ -1,22 +1,14 @@
-import { clsx, type ClassValue } from 'clsx';
-
-/** Merge class names */
-export function cn(...inputs: ClassValue[]) {
-  return clsx(inputs);
-}
-
 /** Generate UUID v7 (timestamp-based) */
-export function generateUuidV7(): string {
-  const now = Date.now();
+export function generateUuidV7(now: number = Date.now()): string {
   const timestampHex = now.toString(16).padStart(12, '0');
   const randomHex = crypto.getRandomValues(new Uint8Array(10))
     .reduce((acc, byte) => acc + byte.toString(16).padStart(2, '0'), '');
   return [
     timestampHex.slice(0, 8),
     timestampHex.slice(8, 12),
-    '7' + randomHex.slice(0, 3),
-    '8' + randomHex.slice(3, 7),
-    randomHex.slice(7, 20),
+    `7${randomHex.slice(0, 3)}`,
+    `8${randomHex.slice(3, 6)}`,
+    randomHex.slice(6, 18),
   ].join('-');
 }
 
@@ -47,26 +39,6 @@ export async function retry<T>(
   throw lastError!;
 }
 
-/** Format number as Indonesian Rupiah */
-export function formatRupiah(amount: string | number, options: { symbol?: boolean; compact?: boolean } = {}): string {
-  const { symbol = true, compact = false } = options;
-  const num = typeof amount === 'string' ? parseFloat(amount) : amount;
-  if (isNaN(num)) return symbol ? 'Rp 0' : '0';
-
-  if (compact) {
-    if (num >= 1_000_000_000) return `${symbol ? 'Rp ' : ''}${(num / 1_000_000_000).toFixed(1)}B`;
-    if (num >= 1_000_000) return `${symbol ? 'Rp ' : ''}${(num / 1_000_000).toFixed(1)}M`;
-    if (num >= 1_000) return `${symbol ? 'Rp ' : ''}${(num / 1_000).toFixed(1)}K`;
-  }
-
-  return new Intl.NumberFormat('id-ID', {
-    style: symbol ? 'currency' : 'decimal',
-    currency: 'IDR',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(num);
-}
-
 /** Parse Indonesian Rupiah string to number */
 export function parseRupiah(str: string): number {
   return parseFloat(str.replace(/[Rp\s.,]/g, '').replace(',', '.')) || 0;
@@ -74,7 +46,7 @@ export function parseRupiah(str: string): number {
 
 /** Deep clone */
 export function deepClone<T>(obj: T): T {
-  return JSON.parse(JSON.stringify(obj));
+  return JSON.parse(JSON.stringify(obj)) as T;
 }
 
 /** Omit keys from object */

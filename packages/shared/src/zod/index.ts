@@ -1,7 +1,9 @@
 import { z } from 'zod';
 
-/** UUID v7 string */
-export const uuidSchema = z.string().uuid({ version: 'v7' });
+/** UUID v7 string (RFC 9562) */
+const UUID_V7_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+export const uuidSchema = z.string().regex(UUID_V7_PATTERN, 'Must be a valid UUID v7');
 
 /** ISO 8601 datetime string (UTC) */
 export const isoDateTimeSchema = z.string().datetime({ offset: true });
@@ -40,10 +42,10 @@ export const tenantIdSchema = uuidSchema;
 export const userIdSchema = uuidSchema;
 
 /** SKU code */
-export const skuSchema = z.string().min(3).max(50).regex(/^[A-Z0-9\-]+$/);
+export const skuSchema = z.string().min(3).max(50).regex(/^[A-Z0-9-]+$/);
 
 /** Barcode (EAN-13 or Code128) */
-export const barcodeSchema = z.string().regex(/^[0-9]{13}$|^[A-Z0-9\-]{10,50}$/);
+export const barcodeSchema = z.string().regex(/^[0-9]{13}$|^[A-Z0-9-]{10,50}$/);
 
 /** Color name */
 export const colorSchema = z.string().min(1).max(30);
@@ -55,4 +57,4 @@ export const sizeSchema = z.string().min(1).max(20);
 export const postalCodeSchema = z.string().regex(/^[0-9]{5}$/);
 
 /** URL slug */
-export const slugSchema = z.string().min(1).max(100).regex(/^[a-z0-9\-]+$/);
+export const slugSchema = z.string().min(1).max(100).regex(/^[a-z0-9-]+$/);
