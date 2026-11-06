@@ -91,7 +91,7 @@ export default function CartPage() {
                           type="button"
                           aria-label="Kurangi jumlah"
                           onClick={() => setQty(item.variantId, item.qty - 1)}
-                          className="min-h-9 min-w-9 text-lg text-muted-foreground hover:text-foreground"
+                          className="min-h-11 min-w-11 text-lg text-muted-foreground hover:text-foreground"
                         >
                           −
                         </button>
@@ -100,7 +100,7 @@ export default function CartPage() {
                           type="button"
                           aria-label="Tambah jumlah"
                           onClick={() => setQty(item.variantId, item.qty + 1)}
-                          className="min-h-9 min-w-9 text-lg text-muted-foreground hover:text-foreground"
+                          className="min-h-11 min-w-11 text-lg text-muted-foreground hover:text-foreground"
                         >
                           +
                         </button>
@@ -108,7 +108,7 @@ export default function CartPage() {
                       <button
                         type="button"
                         onClick={() => remove(item.variantId)}
-                        className="text-xs font-medium text-destructive hover:underline"
+                        className="min-h-11 px-2 text-xs font-medium text-destructive hover:underline"
                       >
                         Hapus
                       </button>

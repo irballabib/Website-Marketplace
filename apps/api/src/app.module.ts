@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { HealthModule } from './health/health.module';
 import { PrismaModule } from './common/prisma/prisma.module';
 import { AccountingModule } from './modules/accounting/accounting.module';
+import { BookingModule } from './modules/booking/booking.module';
 import { CatalogModule } from './modules/catalog/catalog.module';
 import { IdentityModule } from './modules/identity/identity.module';
 import { InventoryModule } from './modules/inventory/inventory.module';
@@ -27,6 +28,7 @@ import { QrModule } from './modules/qr/qr.module';
     PaymentModule,
     PosModule,
     QrModule,
+    BookingModule,
     AccountingModule,
     // ProductionModule,
     // AccountingModule,

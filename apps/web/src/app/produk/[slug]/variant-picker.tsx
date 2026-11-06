@@ -11,6 +11,7 @@ interface VariantPickerProps {
   productName: string;
   productSlug: string;
   imageUrl: string | null;
+  locationId?: string;
 }
 
 export function VariantPicker({
@@ -18,6 +19,7 @@ export function VariantPicker({
   productName,
   productSlug,
   imageUrl,
+  locationId,
 }: VariantPickerProps) {
   const add = useCart((state) => state.add);
   const colors = Array.from(new Set(variants.map((variant) => variant.color)));
@@ -51,6 +53,7 @@ export function VariantPicker({
       size: selected.size,
       price: selected.price,
       imageUrl,
+      locationId,
     });
     setAdded(true);
   }

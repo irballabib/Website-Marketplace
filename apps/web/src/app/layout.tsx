@@ -33,15 +33,15 @@ export const metadata: Metadata = {
   },
   verification: {
     other: {
-      'theme-color': '#03AC0E',
+      'theme-color': '#F9F7F2',
     },
   },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#03AC0E' },
-    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+    { media: '(prefers-color-scheme: light)', color: '#F9F7F2' },
+    { media: '(prefers-color-scheme: dark)', color: '#1A1714' },
   ],
   width: 'device-width',
   initialScale: 1,

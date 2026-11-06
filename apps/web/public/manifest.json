@@ -1,11 +1,12 @@
 {
-  "name": "Cutbray Marketplace",
-  "short_name": "Cutbray",
-  "description": "Platform omnichannel brand celana panjang cutbray",
+  "name": "Bale Store",
+  "short_name": "Bale",
+  "description": "Marketplace celana cutbray Bale Store: belanja online, ambil di toko, dan lacak pesanan.",
+  "id": "/",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#16a34a",
+  "background_color": "#F9F7F2",
+  "theme_color": "#F9F7F2",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "id",
@@ -24,20 +25,19 @@
     }
   ],
   "categories": ["shopping", "business"],
-  "screenshots": [],
   "shortcuts": [
     {
       "name": "Katalog",
       "short_name": "Katalog",
       "description": "Lihat katalog produk",
-      "url": "/catalog",
+      "url": "/",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Booking",
-      "short_name": "Booking",
-      "description": "Buat booking pre-order",
-      "url": "/booking",
+      "name": "Lacak pesanan",
+      "short_name": "Lacak",
+      "description": "Lacak status pesanan",
+      "url": "/lacak",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ]

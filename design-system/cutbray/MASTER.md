@@ -7,9 +7,9 @@
 ---
 
 **Project:** Bale Store
-**Generated:** 2026-10-23 17:17:27
+**Updated:** 2026-10-29
 **Category:** E-commerce
-**Note:** Override visual: marketplace ala Tokopedia (green/white), font Open Sans.
+**Note:** Elegant modern storefront with warm ivory, charcoal, and muted bronze tones.
 
 ---
 
@@ -19,30 +19,30 @@
 
 | Role | Hex | CSS Variable |
 |------|-----|--------------|
-| Primary | `#028A0B` | `--color-primary` |
+| Primary | `#754B38` | `--color-primary` |
 | On Primary | `#FFFFFF` | `--color-on-primary` |
-| Secondary | `#E8F8E9` | `--color-secondary` |
-| On Secondary | `#005A08` | `--color-on-secondary` |
-| Accent/CTA | `#EA580C` | `--color-accent` |
-| On Accent/CTA | `#1A1A1A` | `--color-on-accent` |
-| Background | `#FAFAFA` | `--color-background` |
-| Foreground | `#1A1A1A` | `--color-foreground` |
+| Secondary | `#EFE7DB` | `--color-secondary` |
+| On Secondary | `#513928` | `--color-on-secondary` |
+| Accent/CTA | `#BA8750` | `--color-accent` |
+| On Accent/CTA | `#251F19` | `--color-on-accent` |
+| Background | `#F9F7F2` | `--color-background` |
+| Foreground | `#282522` | `--color-foreground` |
 | Card | `#FFFFFF` | `--color-card` |
-| Card Foreground | `#1A1A1A` | `--color-card-foreground` |
-| Muted | `#F3F4F6` | `--color-muted` |
-| Muted Foreground | `#6B7280` | `--color-muted-foreground` |
-| Border | `#E5E7EB` | `--color-border` |
+| Card Foreground | `#282522` | `--color-card-foreground` |
+| Muted | `#F2EEE7` | `--color-muted` |
+| Muted Foreground | `#6D625A` | `--color-muted-foreground` |
+| Border | `#E1D9CE` | `--color-border` |
 | Destructive | `#DC2626` | `--color-destructive` |
 | On Destructive | `#FFFFFF` | `--color-on-destructive` |
-| Ring | `#03AC0E` | `--color-ring` |
+| Ring | `#754B38` | `--color-ring` |
 
-**Color Notes:** Marketplace green + white; orange for promo/badge only.
+**Color Notes:** Use ivory for the canvas, charcoal for readable text, espresso-bronze for primary actions, and muted bronze sparingly for accents.
 
 ### Typography
 
 - **Heading Font:** Open Sans
 - **Body Font:** Open Sans
-- **Mood:** marketplace, clean, trustworthy, modern, lokal
+- **Mood:** elegant, modern, calm, tactile, locally made
 - **Google Fonts:** [Open Sans](https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap)
 
 **CSS Import:**
@@ -80,7 +80,7 @@
 ```css
 /* Primary Button */
 .btn-primary {
-  background: #EA580C;
+  background: #754B38;
   color: white;
   padding: 12px 24px;
   border-radius: 8px;
@@ -97,8 +97,8 @@
 /* Secondary Button */
 .btn-secondary {
   background: transparent;
-  color: #059669;
-  border: 2px solid #059669;
+  color: #754B38;
+  border: 1px solid #754B38;
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
@@ -111,7 +111,7 @@
 
 ```css
 .card {
-  background: #ECFDF5;
+  background: #FFFEFC;
   border-radius: 12px;
   padding: 24px;
   box-shadow: var(--shadow-md);
@@ -137,9 +137,9 @@
 }
 
 .input:focus {
-  border-color: #059669;
+  border-color: #754B38;
   outline: none;
-  box-shadow: 0 0 0 3px #05966920;
+  box-shadow: 0 0 0 3px #754B3820;
 }
 ```
 
@@ -165,13 +165,13 @@
 
 ## Style Guidelines
 
-**Style:** Vibrant & Block-based
+**Style:** Refined editorial storefront
 
-**Keywords:** Bold, energetic, playful, block layout, geometric shapes, high color contrast, duotone, modern, energetic
+**Keywords:** Minimal, warm neutral, editorial, generous whitespace, subtle texture, modern, premium
 
-**Best For:** Startups, creative agencies, gaming, social media, youth-focused, entertainment, consumer
+**Best For:** Contemporary apparel, local fashion, considered everyday essentials
 
-**Key Effects:** Large sections (48px+ gaps), animated patterns, bold hover (color shift), scroll-snap, large type (32px+), 200-300ms
+**Key Effects:** Clear product photography, restrained shadows, quiet hover transitions, balanced typography, 150-250ms
 
 ### Page Pattern
 

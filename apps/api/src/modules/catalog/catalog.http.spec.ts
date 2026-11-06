@@ -586,6 +586,24 @@ suite('Catalog API (HTTP)', () => {
       price: '250000.00',
       product: { id: first.id, slug: 'alpha-cutbray' },
     });
+
+    await createVariant(first.id, {
+      sku: 'SKU-PUBLIC-2',
+      barcode: '899000000001',
+      color: 'Navy',
+      size: '32',
+      price: '275000',
+    });
+
+    for (const query of ['hitam', 'navy', 'SKU-PUBLIC-1', '899000000001']) {
+      const result = await request(server)
+        .get(`/api/v1/catalog/products?q=${encodeURIComponent(query)}`)
+        .set(publicHeader())
+        .expect(200);
+      expect((result.body as ListBody).data.map((product) => product.slug)).toEqual([
+        'alpha-cutbray',
+      ]);
+    }
   });
 
   it('updates products and variants and hides inactive products from public reads', async () => {

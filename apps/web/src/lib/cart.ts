@@ -9,6 +9,7 @@ export interface CartItem {
   size: string;
   price: string;
   imageUrl: string | null;
+  locationId?: string;
   qty: number;
 }
 

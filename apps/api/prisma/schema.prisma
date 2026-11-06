@@ -103,6 +103,36 @@ model Payment {
   @@map("payments")
 }
 
+model Booking {
+  id                 String    @id @default(uuid())
+  tenantId           String    @map("tenant_id")
+  type               String
+  name               String
+  status             String    @default("DRAFT")
+  dpAmount           Decimal   @default(0) @db.Decimal(18, 2) @map("dp_amount")
+  dpPaid             Boolean   @default(false) @map("dp_paid")
+  startDate          DateTime? @map("start_date")
+  endDate            DateTime? @map("end_date")
+  quotaValue         Int       @map("quota_value")
+  quotaType          String    @map("quota_type")
+  refundRule         String    @map("refund_rule")
+  payDeadlineMinutes Int       @map("pay_deadline_minutes")
+  dpCreditable       Boolean   @default(true) @map("dp_creditable")
+  productSku         String?   @map("product_sku")
+  customerName       String    @map("customer_name")
+  customerPhone      String?   @map("customer_phone")
+  customerEmail      String?   @map("customer_email")
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime  @updatedAt @map("updated_at")
+  createdBy          String?   @map("created_by")
+  cancelledAt        DateTime? @map("cancelled_at")
+  deletedAt          DateTime? @map("deleted_at")
+
+  @@index([tenantId, status, createdAt])
+  @@index([tenantId, type, status])
+  @@map("bookings")
+}
+
 // ============================================
 // ORDER
 // ============================================

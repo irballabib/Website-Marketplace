@@ -19,11 +19,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#03AC0E',
+  themeColor: '#047A0A',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
@@ -41,7 +40,6 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Bale Store POS" />
-        <meta name="theme-color" content="#03AC0E" />
       </head>
       <body className={`${openSans.variable} font-sans antialiased overscroll-none`}>
         <Providers>{children}</Providers>

@@ -1,0 +1,7 @@
+# Bale Store POS
+
+> Aplikasi kasir Bale Store untuk transaksi toko dan bazar.
+
+## Halaman
+
+- [POS](http://localhost:3002/)

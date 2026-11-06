@@ -144,6 +144,7 @@ export interface CreateOrderInput {
   fulfillmentType: 'SHIP' | 'PICKUP';
   shippingAddress?: string;
   shippingCost?: string;
+  locationId?: string;
   qrCode?: string;
 }
 

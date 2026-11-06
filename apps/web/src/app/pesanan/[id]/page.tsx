@@ -60,7 +60,7 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
                   ? 'bg-primary/10 text-primary'
                   : order.status === 'CANCELLED'
                     ? 'bg-destructive/10 text-destructive'
-                    : 'bg-accent/10 text-accent'
+                    : 'bg-accent/10 text-accent-foreground'
               }`}
             >
               {STATUS_LABELS[order.status] ?? order.status}

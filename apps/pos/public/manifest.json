@@ -1,11 +1,12 @@
 {
-  "name": "Cutbray POS",
-  "short_name": "Cutbray POS",
-  "description": "Point of Sale untuk Cutbray - Offline First",
+  "name": "Bale Store POS",
+  "short_name": "Bale POS",
+  "description": "Point of Sale Bale Store untuk kasir toko dan bazar.",
+  "id": "/",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#16a34a",
+  "background_color": "#FAFAFA",
+  "theme_color": "#047A0A",
   "orientation": "landscape-primary",
   "scope": "/",
   "lang": "id",
@@ -23,21 +24,5 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["business", "productivity"],
-  "shortcuts": [
-    {
-      "name": "Buka Shift",
-      "short_name": "Shift",
-      "description": "Buka shift kasir",
-      "url": "/shift",
-      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Riwayat Transaksi",
-      "short_name": "Riwayat",
-      "description": "Lihat riwayat penjualan",
-      "url": "/history",
-      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
-    }
-  ]
+  "categories": ["business", "productivity"]
 }

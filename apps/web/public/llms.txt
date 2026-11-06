@@ -1,0 +1,8 @@
+# Bale Store
+
+> Toko celana cutbray lokal. Katalog, keranjang, checkout, dan lacak pesanan.
+
+## Halaman
+
+- [Katalog](http://localhost:3000/)
+- [Lacak pesanan](http://localhost:3000/lacak)

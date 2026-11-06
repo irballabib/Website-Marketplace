@@ -87,6 +87,16 @@ export default function CheckoutPage() {
       return;
     }
 
+    const locationIds = new Set(
+      items
+        .map((item) => item.locationId)
+        .filter((id): id is string => Boolean(id))
+    );
+    if (locationIds.size > 1) {
+      setError('Keranjang berisi produk dari lokasi berbeda. Buat pesanan terpisah per lokasi.');
+      return;
+    }
+
     setLoading(true);
     try {
       const order = await createOrder(
@@ -98,6 +108,7 @@ export default function CheckoutPage() {
           fulfillmentType,
           shippingAddress: fulfillmentType === 'SHIP' ? shippingAddress.trim() : undefined,
           shippingCost: String(shippingCost),
+          locationId: [...locationIds][0],
         },
         idempotencyKey.current || crypto.randomUUID()
       );
@@ -217,6 +228,11 @@ export default function CheckoutPage() {
                 </p>
               </div>
             ) : null}
+
+            <div className="flex items-center justify-between border-t pt-4 text-sm font-semibold lg:hidden">
+              <span>Total</span>
+              <span className="text-primary">{formatRupiah(total)}</span>
+            </div>
 
             <button
               type="submit"

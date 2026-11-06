@@ -112,6 +112,7 @@ export default async function ProductPage({ params, searchParams }: ProductPageP
             productName={product.name}
             productSlug={product.slug}
             imageUrl={primaryUrl}
+            locationId={location?.id}
           />
 
           <details className="rounded-2xl border p-4 text-sm">

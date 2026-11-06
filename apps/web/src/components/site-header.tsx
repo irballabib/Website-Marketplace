@@ -31,7 +31,7 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/lacak"
-            className="hidden min-h-11 items-center rounded-xl px-3 text-sm font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground sm:flex"
+            className="flex min-h-11 items-center rounded-xl px-3 text-sm font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground"
           >
             Lacak
           </Link>

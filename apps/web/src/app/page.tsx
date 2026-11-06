@@ -21,7 +21,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
       <section className="mx-auto max-w-6xl px-4 pt-6">
         <div className="overflow-hidden rounded-2xl bg-primary px-6 py-8 text-primary-foreground shadow-sm sm:px-10 sm:py-10">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary-foreground/80">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary-foreground">
             Bale Store
           </p>
           <h1 className="mt-2 max-w-2xl text-3xl font-extrabold tracking-tight sm:text-4xl">
@@ -40,12 +40,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           <input
             type="search"
             name="q"
+            aria-label="Cari produk"
             defaultValue={params.q ?? ''}
             placeholder="Cari model atau warna..."
             className="h-11 flex-1 rounded-lg border bg-muted/50 px-4 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-ring/20"
           />
           <select
             name="category"
+            aria-label="Kategori"
             defaultValue={params.category ?? ''}
             className="h-11 rounded-lg border bg-muted/50 px-4 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-ring/20"
           >
