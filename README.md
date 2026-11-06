@@ -1,4 +1,6 @@
-# Bale Store
+# Website-Marketplace
+
+## Bale Store
 
 Marketplace celana cutbray **Bale Store**: toko online, POS kasir offline-first, booking/pre-order dengan DP, produksi (BOM, work order), dan akuntansi SAK EMKM dalam satu database.
 
